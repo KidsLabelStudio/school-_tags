@@ -12,48 +12,56 @@
       flex-direction: column;
       align-items: center;
       margin: 40px;
-      background-color: #f0f4f8;
+      background-color: #f7f7f7; /* Color más suave para el fondo */
     }
     .contenedor {
-      background: white;
-      padding: 20px;
+      background: #ffffff;
+      padding: 25px;
       border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 400px;
+      max-width: 420px;
+      border: 3px solid #f1c40f; /* Un toque de amarillo brillante */
     }
     label {
-      margin-top: 10px;
+      margin-top: 12px;
       display: block;
       font-weight: bold;
+      font-size: 16px;
+      color: #3498db; /* Azul vibrante */
     }
     input, select {
       width: 100%;
-      padding: 6px;
-      margin: 5px 0 15px;
+      padding: 8px;
+      margin: 8px 0 15px;
       border-radius: 6px;
-      border: 1px solid #ccc;
+      border: 2px solid #3498db; /* Azul brillante en los bordes */
     }
     .preview {
-      border: 2px dashed #ccc;
+      border: 2px dashed #3498db;
       padding: 20px;
       text-align: center;
       border-radius: 12px;
-      margin-top: 20px;
-      background-color: #fafafa;
+      margin-top: 25px;
+      background-color: #ecf0f1; /* Gris suave */
     }
     #descargar {
-      background-color: #007bff;
+      background-color: #f39c12; /* Naranja vibrante */
       color: white;
       border: none;
-      padding: 10px 15px;
+      padding: 12px 18px;
       border-radius: 6px;
       cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+    }
+    #descargar:hover {
+      background-color: #e67e22; /* Naranja más oscuro para hover */
     }
   </style>
 </head>
 <body>
-  <h2>Generador de Etiquetas Escolares</h2>
+  <h2 style="color: #2ecc71;">Generador de Etiquetas Escolares</h2>
   <div class="contenedor">
     <label for="nombre">Nombre del estudiante:</label>
     <input type="text" id="nombre" placeholder="Ej: Ana Martínez"/>
@@ -72,7 +80,7 @@
     </select>
 
     <label for="color">Color del texto:</label>
-    <input type="color" id="color" value="#000000"/>
+    <input type="color" id="color" value="#2ecc71"/>
 
     <label for="imagen">Imagen del personaje (JPG/PNG):</label>
     <input type="file" id="imagen" accept="image/*"/>
