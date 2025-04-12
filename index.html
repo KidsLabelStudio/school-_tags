@@ -26,18 +26,24 @@
     }
 
     .etiqueta-preview {
+      width: 180px;
+      min-height: 160px;
       border: 2px dashed #ccc;
       border-radius: 16px;
-      padding: 25px;
-      margin-top: 30px;
+      padding: 20px;
+      margin: 30px auto 0;
       background-color: #fff;
-      font-size: 24px;
+      font-size: 20px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .etiqueta-preview img {
       max-height: 60px;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     input, select, button {
@@ -64,8 +70,13 @@
 </head>
 <body>
   <div class="container">
-    <h1>🎨 Generador de Etiquetas Escolares</h1>
+    <h1 id="titulo">🎨 Generador de Etiquetas Escolares</h1>
     <form id="form">
+      <select id="idioma">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+      </select>
+
       <input type="text" id="nombre" placeholder="Nombre" required />
       <input type="text" id="grado" placeholder="Grado" required />
       <input type="text" id="anio" placeholder="Año" required />
@@ -85,7 +96,7 @@
 
       <input type="color" id="color" value="#000000" />
       <input type="file" id="imagen" accept="image/*" />
-      <button type="submit">Generar Vista Previa</button>
+      <button type="submit" id="generar-btn">Generar Vista Previa</button>
     </form>
 
     <div id="etiqueta" class="etiqueta-preview" style="display: none;"></div>
@@ -94,6 +105,39 @@
   <script>
     const form = document.getElementById('form');
     const etiqueta = document.getElementById('etiqueta');
+    const idiomaSelect = document.getElementById('idioma');
+
+    const traducciones = {
+      es: {
+        titulo: "🎨 Generador de Etiquetas Escolares",
+        nombre: "Nombre",
+        grado: "Grado",
+        anio: "Año",
+        boton: "Generar Vista Previa"
+      },
+      en: {
+        titulo: "🎨 School Label Generator",
+        nombre: "Name",
+        grado: "Grade",
+        anio: "Year",
+        boton: "Generate Preview"
+      }
+    };
+
+    function actualizarIdioma(lang) {
+      const t = traducciones[lang];
+      document.getElementById('titulo').textContent = t.titulo;
+      document.getElementById('nombre').placeholder = t.nombre;
+      document.getElementById('grado').placeholder = t.grado;
+      document.getElementById('anio').placeholder = t.anio;
+      document.getElementById('generar-btn').textContent = t.boton;
+    }
+
+    idiomaSelect.addEventListener('change', () => {
+      actualizarIdioma(idiomaSelect.value);
+    });
+
+    actualizarIdioma(idiomaSelect.value);
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -117,41 +161,14 @@
         reader.onload = function(e) {
           const img = document.createElement('img');
           img.src = e.target.result;
+          img.style.marginTop = '12px';
           etiqueta.appendChild(img);
         }
         reader.readAsDataURL(imagenInput.files[0]);
       }
 
-      etiqueta.style.display = 'block';
+      etiqueta.style.display = 'flex';
     });
   </script>
-  <script>
-  const lang = navigator.language.startsWith('es') ? 'es' : 'en';
-
-  const translations = {
-    es: {
-      title: "🎨 Generador de Etiquetas Escolares",
-      name: "Nombre",
-      grade: "Grado",
-      year: "Año",
-      generate: "Generar Vista Previa"
-    },
-    en: {
-      title: "🎨 School Label Generator",
-      name: "Name",
-      grade: "Grade",
-      year: "Year",
-      generate: "Generate Preview"
-    }
-  };
-
-  const t = translations[lang];
-
-  document.querySelector("h1").textContent = t.title;
-  document.getElementById("nombre").placeholder = t.name;
-  document.getElementById("grado").placeholder = t.grade;
-  document.getElementById("anio").placeholder = t.year;
-  document.querySelector("button[type='submit']").textContent = t.generate;
-</script>
 </body>
 </html>
