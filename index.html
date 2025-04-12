@@ -10,15 +10,15 @@
       font-family: 'Fredoka', sans-serif;
       margin: 0;
       padding: 0;
-      background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat;
-      background-color: #f3f7ff;
+      background: linear-gradient(135deg, #ffe3e3 0%, #d0f4de 100%);
+      background-attachment: fixed;
     }
 
     .container {
       max-width: 700px;
       margin: 60px auto;
       padding: 30px;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.92);
       border-radius: 20px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
       text-align: center;
@@ -26,15 +26,15 @@
     }
 
     .etiqueta-preview {
-      width: 180px;
+      width: 160px;
       min-height: 160px;
-      border: 2px dashed #ccc;
+      border: 2px dashed #bbb;
       border-radius: 16px;
       padding: 20px;
       margin: 30px auto 0;
       background-color: #fff;
       font-size: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -42,8 +42,8 @@
     }
 
     .etiqueta-preview img {
-      max-height: 60px;
-      margin-top: 12px;
+      max-height: 50px;
+      margin-top: 10px;
     }
 
     input, select, button {
@@ -149,19 +149,14 @@
       const color = document.getElementById('color').value;
       const imagenInput = document.getElementById('imagen');
 
-      etiqueta.style.fontFamily = `'${fuente}', sans-serif`;
-      etiqueta.style.color = color;
-      etiqueta.innerHTML = `
-        <strong>${nombre}</strong><br />
-        ${grado} - ${anio}
-      `;
+      etiqueta.innerHTML = `<strong style="font-family: '${fuente}', sans-serif; color: ${color}">${nombre}</strong><br/>${grado} - ${anio}`;
 
       if (imagenInput.files && imagenInput.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
           const img = document.createElement('img');
           img.src = e.target.result;
-          img.style.marginTop = '12px';
+          img.style.marginTop = '10px';
           etiqueta.appendChild(img);
         }
         reader.readAsDataURL(imagenInput.files[0]);
