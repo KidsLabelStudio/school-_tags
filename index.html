@@ -1,67 +1,86 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Generador de Etiquetas Escolares</title>
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Comic+Neue&family=Montserrat&family=Lobster&family=Pacifico&family=Indie+Flower&family=Fredoka&family=Amatic+SC&family=Caveat&family=Shadows+Into+Light&display=swap" rel="stylesheet">
   <style>
     body {
+      margin: 0;
+      padding: 40px 20px;
       font-family: 'Montserrat', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 40px;
-      background-color: #f7f7f7; /* Color más suave para el fondo */
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      background-attachment: fixed;
+      background-size: cover;
     }
+
     .contenedor {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.9);
       padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 420px;
-      border: 3px solid #f1c40f; /* Un toque de amarillo brillante */
+      max-width: 480px;
+      margin: auto;
+      backdrop-filter: blur(4px);
+      border: 3px solid #f1c40f;
     }
+
     label {
       margin-top: 12px;
       display: block;
       font-weight: bold;
       font-size: 16px;
-      color: #3498db; /* Azul vibrante */
+      color: #3498db;
     }
+
     input, select {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin: 8px 0 15px;
-      border-radius: 6px;
-      border: 2px solid #3498db; /* Azul brillante en los bordes */
+      border-radius: 8px;
+      border: 2px solid #3498db;
+      font-size: 15px;
     }
+
     .preview {
       border: 2px dashed #3498db;
       padding: 20px;
       text-align: center;
-      border-radius: 12px;
+      border-radius: 15px;
       margin-top: 25px;
-      background-color: #ecf0f1; /* Gris suave */
+      background-color: #ecf0f1;
     }
+
     #descargar {
-      background-color: #f39c12; /* Naranja vibrante */
+      background-color: #f39c12;
       color: white;
       border: none;
       padding: 12px 18px;
       border-radius: 6px;
       cursor: pointer;
       font-size: 18px;
+      width: 100%;
+      margin-top: 10px;
       transition: background-color 0.3s ease;
     }
+
     #descargar:hover {
-      background-color: #e67e22; /* Naranja más oscuro para hover */
+      background-color: #e67e22;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2ecc71;
+      font-size: 28px;
+      margin-bottom: 30px;
     }
   </style>
 </head>
 <body>
-  <h2 style="color: #2ecc71;">Generador de Etiquetas Escolares</h2>
+  <h2>Generador de Etiquetas Escolares</h2>
   <div class="contenedor">
     <label for="nombre">Nombre del estudiante:</label>
     <input type="text" id="nombre" placeholder="Ej: Ana Martínez"/>
@@ -77,6 +96,13 @@
       <option value="Roboto">Roboto</option>
       <option value="Comic Neue">Comic Neue</option>
       <option value="Montserrat">Montserrat</option>
+      <option value="Lobster">Lobster</option>
+      <option value="Pacifico">Pacifico</option>
+      <option value="Indie Flower">Indie Flower</option>
+      <option value="Fredoka">Fredoka</option>
+      <option value="Amatic SC">Amatic SC</option>
+      <option value="Caveat">Caveat</option>
+      <option value="Shadows Into Light">Shadows Into Light</option>
     </select>
 
     <label for="color">Color del texto:</label>
