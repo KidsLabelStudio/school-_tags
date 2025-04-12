@@ -1,154 +1,146 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Generador de Etiquetas Escolares</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Fredoka', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f5f5f5;
+      background: linear-gradient(to right, #f0f8ff, #e0ffff);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
     }
     .container {
-      background: #ffffff;
-      padding: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      text-align: center;
-      width: 100%;
-      max-width: 600px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
       position: relative;
     }
-    h1 {
-      color: #333;
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin: 10px 0 5px;
-      font-size: 16px;
-      color: #333;
-    }
-    input, button {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 2px solid #ddd;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    input:focus, button:focus {
-      outline: none;
-      border-color: #66b2ff;
-    }
-    button {
-      background-color: #66b2ff;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #3399ff;
-    }
-    .preview-container {
-      margin-top: 20px;
-      padding: 15px;
-      border: 2px dashed #66b2ff;
-      width: 100%;
-      max-width: 250px;
-      margin: 20px auto;
-      min-height: 150px;
-      text-align: center;
-      line-height: 1.5;
-      background: #fafafa;
-    }
-    .language-selector {
+    .language-switch {
       position: absolute;
       top: 20px;
       right: 20px;
-      font-size: 16px;
-      background-color: #fff;
-      border: 1px solid #ddd;
+      background: #fff;
+      border: 1px solid #ccc;
       padding: 5px 10px;
       cursor: pointer;
+      font-size: 14px;
+      border-radius: 5px;
     }
-    .material-input {
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      display: block;
       margin-top: 10px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 5px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+    }
+    .preview {
+      border: 2px dashed #999;
+      margin-top: 20px;
+      padding: 15px;
+      background: #fefefe;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.5;
+      width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      background: #4da6ff;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #3399ff;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <button class="language-selector" onclick="toggleLanguage()">ES/EN</button>
-    <h1 id="title">Generador de Etiquetas Escolares</h1>
-    
-    <label for="nombre" id="nombre-label">Nombre</label>
-    <input type="text" id="nombre" placeholder="Nombre" oninput="updatePreview()">
+    <div class="language-switch" onclick="toggleLanguage()">ES / EN</div>
 
-    <label for="grado" id="grado-label">Grado</label>
-    <input type="text" id="grado" placeholder="Grado" oninput="updatePreview()">
+    <h1 id="titulo">Generador de Etiquetas</h1>
 
-    <label for="anio" id="anio-label">Año</label>
-    <input type="text" id="anio" placeholder="Año" oninput="updatePreview()">
+    <label id="label-nombre" for="nombre">Nombre</label>
+    <input id="nombre" type="text" oninput="updatePreview()" placeholder="Ej: Valentina"/>
 
-    <!-- Campo opcional para materia -->
-    <div class="material-input">
-      <label for="materia" id="materia-label">Materia (opcional)</label>
-      <input type="text" id="materia" placeholder="Materia" oninput="updatePreview()">
+    <label id="label-grado" for="grado">Grado</label>
+    <input id="grado" type="text" oninput="updatePreview()" placeholder="Ej: 2° A"/>
+
+    <label id="label-anio" for="anio">Año</label>
+    <input id="anio" type="text" oninput="updatePreview()" placeholder="Ej: 2025"/>
+
+    <label id="label-materia" for="materia">Materia (opcional)</label>
+    <input id="materia" type="text" oninput="updatePreview()" placeholder="Ej: Matemáticas"/>
+
+    <div class="preview" id="preview">
+      Nombre<br>Grado - Año
     </div>
 
-    <div class="preview-container" id="vista-previa">
-      <!-- Vista previa de la etiqueta -->
-      Nombre - Grado - Año
-    </div>
-
-    <button onclick="downloadPDF()">Descargar Etiqueta en PDF</button>
+    <button onclick="downloadPDF()" id="btn-descargar">Descargar PDF</button>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  
   <script>
-    const translations = {
+    let idioma = 'es';
+
+    const textos = {
       es: {
-        title: "Generador de Etiquetas Escolares",
-        name: "Nombre",
-        grade: "Grado",
-        year: "Año",
+        titulo: "Generador de Etiquetas",
+        nombre: "Nombre",
+        grado: "Grado",
+        anio: "Año",
         materia: "Materia (opcional)",
-        generate: "Generar Vista Previa",
-        download: "Descargar Etiqueta en PDF"
+        descargar: "Descargar PDF"
       },
       en: {
-        title: "School Label Generator",
-        name: "Name",
-        grade: "Grade",
-        year: "Year",
+        titulo: "Label Generator",
+        nombre: "Name",
+        grado: "Grade",
+        anio: "Year",
         materia: "Subject (optional)",
-        generate: "Generate Preview",
-        download: "Download Label as PDF"
+        descargar: "Download PDF"
       }
     };
-    
-    let currentLanguage = 'es'; // Default language
-    const t = translations[currentLanguage];
 
     function toggleLanguage() {
-      currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
-      const newT = translations[currentLanguage];
-      document.getElementById("title").textContent = newT.title;
-      document.getElementById("nombre-label").textContent = newT.name;
-      document.getElementById("grado-label").textContent = newT.grade;
-      document.getElementById("anio-label").textContent = newT.year;
-      document.getElementById("materia-label").textContent = newT.materia;
-      document.querySelector("button").textContent = newT.download;
+      idioma = idioma === 'es' ? 'en' : 'es';
+      const t = textos[idioma];
+      document.getElementById("titulo").textContent = t.titulo;
+      document.getElementById("label-nombre").textContent = t.nombre;
+      document.getElementById("label-grado").textContent = t.grado;
+      document.getElementById("label-anio").textContent = t.anio;
+      document.getElementById("label-materia").textContent = t.materia;
+      document.getElementById("btn-descargar").textContent = t.descargar;
     }
 
     function updatePreview() {
@@ -156,19 +148,23 @@
       const grado = document.getElementById("grado").value;
       const anio = document.getElementById("anio").value;
       const materia = document.getElementById("materia").value;
-      
-      const previewText = `${nombre}\n${grado} - ${anio}${materia ? '\n' + materia : ''}`;
-      document.getElementById("vista-previa").textContent = previewText;
+      const texto = `${nombre || 'Nombre'}\n${grado || 'Grado'} - ${anio || 'Año'}` + (materia ? `\n${materia}` : '');
+      document.getElementById("preview").textContent = texto;
     }
 
     function downloadPDF() {
       const { jsPDF } = window.jspdf;
-      const doc = new jsPDF({ unit: "mm", format: "a6" }); // Tamaño A6 para sticker
-      const canvas = document.getElementById("vista-previa");
-      
-      // Añadir texto al PDF
-      doc.text(canvas.textContent, 10, 10);
-      doc.save("etiqueta.pdf"); // Descargar el PDF
+      const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: [60, 40] });
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(12);
+      const texto = document.getElementById("preview").textContent;
+      const lineas = texto.split('\n');
+      let y = 15;
+      for (let linea of lineas) {
+        doc.text(linea, 10, y);
+        y += 8;
+      }
+      doc.save("etiqueta.pdf");
     }
   </script>
 </body>
