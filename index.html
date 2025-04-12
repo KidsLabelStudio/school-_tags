@@ -1,163 +1,129 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Generador de Etiquetas Escolares</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Comic+Neue&family=Montserrat&family=Lobster&family=Pacifico&family=Indie+Flower&family=Fredoka&family=Amatic+SC&family=Caveat&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&family=Fredoka&family=Indie+Flower&family=Pacifico&family=Raleway&family=Shadows+Into+Light&family=Gloria+Hallelujah&family=Baloo+2&family=Orbitron&family=Cabin+Sketch&display=swap" rel="stylesheet">
   <style>
     body {
+      font-family: 'Fredoka', sans-serif;
       margin: 0;
-      padding: 40px 20px;
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #fdfbfb, #ebedee);
-      background-attachment: fixed;
-      background-size: cover;
+      padding: 0;
+      background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat;
+      background-color: #f3f7ff;
     }
 
-    .contenedor {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 25px;
+    .container {
+      max-width: 700px;
+      margin: 60px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 480px;
-      margin: auto;
-      backdrop-filter: blur(4px);
-      border: 3px solid #f1c40f;
-    }
-
-    label {
-      margin-top: 12px;
-      display: block;
-      font-weight: bold;
-      font-size: 16px;
-      color: #3498db;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0 15px;
-      border-radius: 8px;
-      border: 2px solid #3498db;
-      font-size: 15px;
-    }
-
-    .preview {
-      border: 2px dashed #3498db;
-      padding: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
       text-align: center;
-      border-radius: 15px;
-      margin-top: 25px;
-      background-color: #ecf0f1;
+      position: relative;
     }
 
-    #descargar {
-      background-color: #f39c12;
+    .etiqueta-preview {
+      border: 2px dashed #ccc;
+      border-radius: 16px;
+      padding: 25px;
+      margin-top: 30px;
+      background-color: #fff;
+      font-size: 24px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .etiqueta-preview img {
+      max-height: 60px;
+      margin-top: 10px;
+    }
+
+    input, select, button {
+      margin: 12px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #ff69b4;
       color: white;
       border: none;
-      padding: 12px 18px;
-      border-radius: 6px;
       cursor: pointer;
-      font-size: 18px;
-      width: 100%;
-      margin-top: 10px;
-      transition: background-color 0.3s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    #descargar:hover {
-      background-color: #e67e22;
-    }
-
-    h2 {
-      text-align: center;
-      color: #2ecc71;
-      font-size: 28px;
-      margin-bottom: 30px;
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
     }
   </style>
 </head>
 <body>
-  <h2>Generador de Etiquetas Escolares</h2>
-  <div class="contenedor">
-    <label for="nombre">Nombre del estudiante:</label>
-    <input type="text" id="nombre" placeholder="Ej: Ana Martínez"/>
+  <div class="container">
+    <h1>🎨 Generador de Etiquetas Escolares</h1>
+    <form id="form">
+      <input type="text" id="nombre" placeholder="Nombre" required />
+      <input type="text" id="grado" placeholder="Grado" required />
+      <input type="text" id="anio" placeholder="Año" required />
 
-    <label for="grado">Grado:</label>
-    <input type="text" id="grado" placeholder="Ej: 3° A"/>
+      <select id="fuente">
+        <option value="Comic Neue">Comic Neue</option>
+        <option value="Fredoka">Fredoka</option>
+        <option value="Indie Flower">Indie Flower</option>
+        <option value="Pacifico">Pacifico</option>
+        <option value="Raleway">Raleway</option>
+        <option value="Shadows Into Light">Shadows Into Light</option>
+        <option value="Gloria Hallelujah">Gloria Hallelujah</option>
+        <option value="Baloo 2">Baloo 2</option>
+        <option value="Orbitron">Orbitron</option>
+        <option value="Cabin Sketch">Cabin Sketch</option>
+      </select>
 
-    <label for="año">Año escolar:</label>
-    <input type="text" id="año" placeholder="Ej: 2025"/>
+      <input type="color" id="color" value="#000000" />
+      <input type="file" id="imagen" accept="image/*" />
+      <button type="submit">Generar Vista Previa</button>
+    </form>
 
-    <label for="fuente">Fuente:</label>
-    <select id="fuente">
-      <option value="Roboto">Roboto</option>
-      <option value="Comic Neue">Comic Neue</option>
-      <option value="Montserrat">Montserrat</option>
-      <option value="Lobster">Lobster</option>
-      <option value="Pacifico">Pacifico</option>
-      <option value="Indie Flower">Indie Flower</option>
-      <option value="Fredoka">Fredoka</option>
-      <option value="Amatic SC">Amatic SC</option>
-      <option value="Caveat">Caveat</option>
-      <option value="Shadows Into Light">Shadows Into Light</option>
-    </select>
-
-    <label for="color">Color del texto:</label>
-    <input type="color" id="color" value="#2ecc71"/>
-
-    <label for="imagen">Imagen del personaje (JPG/PNG):</label>
-    <input type="file" id="imagen" accept="image/*"/>
-
-    <button id="descargar">Descargar Etiqueta</button>
-  </div>
-
-  <div class="preview" id="preview">
-    <canvas id="canvas" width="300" height="180"></canvas>
+    <div id="etiqueta" class="etiqueta-preview" style="display: none;"></div>
   </div>
 
   <script>
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
+    const form = document.getElementById('form');
+    const etiqueta = document.getElementById('etiqueta');
 
-    function actualizarPreview() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
 
       const nombre = document.getElementById('nombre').value;
       const grado = document.getElementById('grado').value;
-      const año = document.getElementById('año').value;
+      const anio = document.getElementById('anio').value;
       const fuente = document.getElementById('fuente').value;
       const color = document.getElementById('color').value;
+      const imagenInput = document.getElementById('imagen');
 
-      ctx.font = `20px "${fuente}"`;
-      ctx.fillStyle = color;
-      ctx.fillText(nombre, 10, 40);
-      ctx.fillText(grado, 10, 80);
-      ctx.fillText(año, 10, 120);
+      etiqueta.style.fontFamily = `'${fuente}', sans-serif`;
+      etiqueta.style.color = color;
+      etiqueta.innerHTML = `
+        <strong>${nombre}</strong><br />
+        ${grado} - ${anio}
+      `;
 
-      const imgInput = document.getElementById('imagen');
-      if (imgInput.files[0]) {
-        const img = new Image();
-        img.onload = () => ctx.drawImage(img, 200, 10, 80, 80);
-        img.src = URL.createObjectURL(imgInput.files[0]);
+      if (imagenInput.files && imagenInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          etiqueta.appendChild(img);
+        }
+        reader.readAsDataURL(imagenInput.files[0]);
       }
-    }
 
-    document.querySelectorAll('input, select').forEach(el => el.addEventListener('input', actualizarPreview));
-    document.getElementById('imagen').addEventListener('change', actualizarPreview);
-
-    document.getElementById('descargar').addEventListener('click', () => {
-      const enlace = document.createElement('a');
-      enlace.download = "etiqueta.png";
-      enlace.href = canvas.toDataURL();
-      enlace.click();
+      etiqueta.style.display = 'block';
     });
-
-    actualizarPreview();
   </script>
 </body>
 </html>
