@@ -1,81 +1,160 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Generador de Etiquetas Escolares</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Etiquetas Escolares</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        header {
+            background-color: #4caf50;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            border-radius: 10px 10px 0 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .form-section {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .form-section input, .form-section select {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+            width: 100%;
+        }
+        .form-section label {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .preview-box {
+            padding: 10px;
+            margin-top: 20px;
+            border: 2px dashed #4caf50;
+            background-color: rgba(0, 128, 0, 0.1);
+            border-radius: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        .preview-box img {
+            width: 80px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .label-preview {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+            border: 2px solid #4caf50;
+            width: 100%;
+            margin-top: 30px;
+        }
+        .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .image-upload {
+            margin-top: 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 14px;
+            background-color: #ffffff;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        .mascota {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 100px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1><i class="fa-solid fa-tags"></i> Etiquetas Escolares</h1>
-      <div class="lang-switch">
-        <label for="lang">🌐</label>
-        <select id="lang">
-          <option value="es">Español</option>
-          <option value="en">English</option>
-        </select>
-      </div>
-    </header>
+    <header>Generador de Etiquetas Escolares</header>
 
-    <form id="labelForm">
-      <div class="input-group">
-        <label><i class="fa-solid fa-user"></i> <span data-es="Nombre:" data-en="Name:">Nombre:</span></label>
-        <input type="text" id="name" placeholder="Ej. Sofía" />
-      </div>
-      <div class="input-group">
-        <label><i class="fa-solid fa-school"></i> <span data-es="Grado:" data-en="Grade:">Grado:</span></label>
-        <input type="text" id="grade" placeholder="Ej. 3°" />
-      </div>
-      <div class="input-group">
-        <label><i class="fa-solid fa-calendar"></i> <span data-es="Año:" data-en="Year:">Año:</span></label>
-        <input type="text" id="year" placeholder="Ej. 2025" />
-      </div>
-      <div class="input-group">
-        <label><i class="fa-solid fa-book"></i> <span data-es="Materia (opcional):" data-en="Subject (optional):">Materia (opcional):</span></label>
-        <input type="text" id="subject" placeholder="Ej. Matemáticas" />
-      </div>
-      <div class="input-group">
-        <label><i class="fa-solid fa-font"></i> <span data-es="Fuente:" data-en="Font:">Fuente:</span></label>
-        <select id="fontSelect">
-          <option value="Arial">Arial</option>
-          <option value="Georgia">Georgia</option>
-          <option value="Courier New">Courier New</option>
-          <option value="Times New Roman">Times New Roman</option>
-          <option value="Comic Sans MS">Comic Sans MS</option>
-          <option value="Verdana">Verdana</option>
-          <option value="Tahoma">Tahoma</option>
-          <option value="Trebuchet MS">Trebuchet MS</option>
-          <option value="Lucida Console">Lucida Console</option>
-          <option value="Quicksand">Quicksand</option>
-        </select>
-      </div>
-      <div class="input-group">
-        <label><i class="fa-solid fa-palette"></i> <span data-es="Color de texto:" data-en="Text color:">Color de texto:</span></label>
-        <input type="color" id="colorPicker" />
-      </div>
-      <div class="input-group">
-        <label><i class="fa-solid fa-image"></i> <span data-es="Imagen (personaje):" data-en="Image (character):">Imagen (personaje):</span></label>
-        <input type="file" id="imageUpload" accept="image/*" />
-      </div>
-    </form>
+    <div class="container">
+        <!-- Selector de Idioma -->
+        <div class="language-switch">
+            <label for="language-select">Idioma</label>
+            <select id="language-select" onchange="changeLanguage()">
+                <option value="es">Español</option>
+                <option value="en">English</option>
+            </select>
+        </div>
 
-    <div class="preview-wrapper">
-      <div id="labelPreview" class="label-preview">
-        <p id="previewName">Nombre</p>
-        <p id="previewGrade">Grado</p>
-        <p id="previewYear">Año</p>
-        <p id="previewSubject" class="optional-field"></p>
-        <img id="previewImage" />
-      </div>
-    </div>
+        <div class="form-section">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Nombre del estudiante">
+            
+            <label for="grado">Grado</label>
+            <input type="text" id="grado" placeholder="Grado o curso">
 
-    <button id="downloadBtn"><i class="fa-solid fa-download"></i> Descargar PDF</button>
-  </div>
+            <label for="ano">Año</label>
+            <input type="text" id="ano" placeholder="Año escolar">
+            
+            <label for="materia">Materia (opcional)</label>
+            <input type="text" id="materia" placeholder="Ejemplo: Matemáticas">
 
-  <script src="script.js"></script>
-</body>
-</html>
+            <label for="font">Selecciona la Fuente</label>
+            <select id="font" onchange="updatePreview()">
+                <option value="Nunito">Nunito</option>
+                <option value="Arial">Arial</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Verdana">Verdana</option>
+            </select>
+
+            <label for="color">Selecciona el Color</label>
+            <input type="color" id="color" onchange="updatePreview()">
+        </div>
+
+        <div class="preview-box">
+            <img src="https://via.placeholder.com/100?text=🦜" alt="Mascota Cacatúa Ninfa" class="mascota">
+            <div id
