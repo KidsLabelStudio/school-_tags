@@ -24,6 +24,7 @@
       text-align: center;
       width: 100%;
       max-width: 600px;
+      position: relative;
     }
     h1 {
       color: #333;
@@ -61,11 +62,12 @@
       padding: 15px;
       border: 2px dashed #66b2ff;
       width: 100%;
-      max-width: 200px; /* Ajustamos el ancho */
+      max-width: 250px;
       margin: 20px auto;
       min-height: 150px;
       text-align: center;
       line-height: 1.5;
+      background: #fafafa;
     }
     .language-selector {
       position: absolute;
@@ -76,6 +78,9 @@
       border: 1px solid #ddd;
       padding: 5px 10px;
       cursor: pointer;
+    }
+    .material-input {
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -94,9 +99,11 @@
     <label for="anio" id="anio-label">Año</label>
     <input type="text" id="anio" placeholder="Año" oninput="updatePreview()">
 
-    <!-- Nuevo campo opcional para Materia -->
-    <label for="materia" id="materia-label">Materia (opcional)</label>
-    <input type="text" id="materia" placeholder="Materia" oninput="updatePreview()">
+    <!-- Campo opcional para materia -->
+    <div class="material-input">
+      <label for="materia" id="materia-label">Materia (opcional)</label>
+      <input type="text" id="materia" placeholder="Materia" oninput="updatePreview()">
+    </div>
 
     <div class="preview-container" id="vista-previa">
       <!-- Vista previa de la etiqueta -->
