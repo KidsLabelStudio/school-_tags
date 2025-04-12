@@ -125,5 +125,33 @@
       etiqueta.style.display = 'block';
     });
   </script>
+  <script>
+  const lang = navigator.language.startsWith('es') ? 'es' : 'en';
+
+  const translations = {
+    es: {
+      title: "🎨 Generador de Etiquetas Escolares",
+      name: "Nombre",
+      grade: "Grado",
+      year: "Año",
+      generate: "Generar Vista Previa"
+    },
+    en: {
+      title: "🎨 School Label Generator",
+      name: "Name",
+      grade: "Grade",
+      year: "Year",
+      generate: "Generate Preview"
+    }
+  };
+
+  const t = translations[lang];
+
+  document.querySelector("h1").textContent = t.title;
+  document.getElementById("nombre").placeholder = t.name;
+  document.getElementById("grado").placeholder = t.grade;
+  document.getElementById("anio").placeholder = t.year;
+  document.querySelector("button[type='submit']").textContent = t.generate;
+</script>
 </body>
 </html>
